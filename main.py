@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 from pathlib import Path
 from stats import get_num_words, get_num_characters, sort_character_counts
+import sys
 
 
 def main() -> None:
-    book_path: str = "books/frankenstein.txt"
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path: str = sys.argv[1]
     book_text: str = get_book_text(book_path)
 
     num_words: int = get_num_words(book_text)
