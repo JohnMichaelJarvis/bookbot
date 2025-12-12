@@ -1,13 +1,14 @@
-#! Python3
+#!/usr/bin/env python3
 
 from pathlib import Path
+from stats import get_num_words
 
 
 def main() -> None:
     book_path: str = "books/frankenstein.txt"
     book_text = get_book_text(book_path)
 
-    num_words = count_words(book_text)
+    num_words = get_num_words(book_text)
 
     print(f"Found {num_words} total words")
 
@@ -25,19 +26,6 @@ def get_book_text(filename: str | Path) -> str:
         book_contents = f.read()
 
     return book_contents
-
-
-def count_words(text: str) -> int:
-    """Count the total number of words in a text string.
-
-    Args:
-        text (str): The text to be processed
-
-    Returns:
-        int: The total number of words in the text
-    """
-
-    return len(text.split())
 
 
 if __name__ == "__main__":
